@@ -38,7 +38,7 @@ export const ItemsRow = ({ category }: { category: string }) => {
       <div className="container">
         <div className="row">
           {!!error && (error as React.ReactNode)}
-          <Link to={`${category}`}>
+          <Link to={`genre/${category}`}>
             <h2>{category}</h2>
           </Link>
         </div>

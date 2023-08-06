@@ -2,6 +2,10 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
 }
+.wrapper {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+}
 h1,
 h2 {
   font-family: "Open Sans Condensed ExtraBold", sans-serif;
@@ -13,6 +17,12 @@ h2 {
 }
 img {
   max-width: 100%;
+}
+.section img {
+  border: 1px solid #ccc;
+}
+.dark .section img {
+  border-color: #222;
 }
 button {
   cursor: pointer;
@@ -26,7 +36,7 @@ a {
 .container {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 15px;
 }
 .row {
   width: 100%;

@@ -1,3 +1,15 @@
 .itemBlock {
   display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.itemBlock__poster {
+  position: relative;
+  max-width: 190px;
+}
+.itemBlock__title {
+  margin-top: 0;
+}
+.itemBlock p {
+  margin: 0 0 10px 0;
 }

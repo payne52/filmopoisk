@@ -1,8 +1,14 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchCurrentItemInfo } from "redux/reducers/itemsReducer";
+import {
+  addToFavorite,
+  deleteFromFavorite,
+  fetchCurrentItemInfo,
+} from "redux/reducers/itemsReducer";
 import { useAppDispatch, useAppSelector } from "redux/store";
 import { Rating } from "utils/rating";
+
+import { ChangeItemStatusButton } from "../../common/changeItemStatusButton/changeItemStatusVutton";
 
 import "./itemSingle.css";
 
@@ -36,7 +42,9 @@ export const ItemSingle = () => {
           <div className="col col-description">
             <h1>{currentItem?.name}</h1>
             <p>{currentItem?.alternativeName}</p>
-            <button>Добавить в избранное</button>
+            {currentItem?.id && (
+              <ChangeItemStatusButton itemId={currentItem?.id} />
+            )}
             <p className="description-text">{currentItem?.description}</p>
             <h2>О {currentItem?.type === "movie" ? "фильме" : "сериале"}</h2>
             <div className="item-info__list">
@@ -78,6 +86,14 @@ export const ItemSingle = () => {
                       .join(", ")}
                 </div>
               </div>
+              {currentItem?.movieLength && (
+                <div className="item-info__list-item">
+                  <div className="item-info__title">Продолжительность</div>
+                  <div className="item-info__value">
+                    {currentItem?.movieLength} мин.
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

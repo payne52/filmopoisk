@@ -24,7 +24,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     <ThemeContext.Provider
       value={{ theme: myTheme, toggleTheme: toggleMyTheme }}
     >
-      <Background theme={myTheme} className={myTheme}>
+      <Background theme={myTheme} className={`wrapper ${myTheme}`}>
         {children}
       </Background>
     </ThemeContext.Provider>

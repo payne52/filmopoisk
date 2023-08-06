@@ -7,7 +7,7 @@ export type InitialStateType = {
   itemsInfoComedy: ItemsInfo;
   loading: boolean;
   error: unknown;
-  favoriteItems: Array<ItemType> | null;
+  favoriteItems: Array<ItemType>;
   currentItem: ItemType | null;
 };
 
@@ -28,6 +28,10 @@ export type fetchProps = {
   showAll?: boolean;
 };
 
+type DeleteItemType = {
+  deleteId: number;
+};
+
 export const fetchItemsInfo = createAsyncThunk<void, fetchProps>(
   "items/fetchItemsInfo",
   async ({ page, limit, genre, showAll }, { rejectWithValue, dispatch }) => {
@@ -38,7 +42,7 @@ export const fetchItemsInfo = createAsyncThunk<void, fetchProps>(
         }`,
         {
           headers: {
-            "X-API-KEY": "A78YPSY-H8RMTGK-KY1GX5W-A9JRBXE",
+            "X-API-KEY": "AJ97YQ1-EF0MJEA-HRF7BKT-94NKRNM",
           },
         }
       );
@@ -72,7 +76,7 @@ export const fetchCurrentItemInfo = createAsyncThunk<void, number>(
         `https://api.kinopoisk.dev/v1.3/movie/${itemId}`,
         {
           headers: {
-            "X-API-KEY": "A78YPSY-H8RMTGK-KY1GX5W-A9JRBXE",
+            "X-API-KEY": "AJ97YQ1-EF0MJEA-HRF7BKT-94NKRNM",
           },
         }
       );
@@ -104,6 +108,22 @@ const itemsSlice = createSlice({
     },
     clearCurrentItem: (state) => {
       state.currentItem = null;
+    },
+    clearCurrentItems: (state) => {
+      state.itemsInfo = {} as ItemsInfo;
+    },
+    addToFavorite: (state) => {
+      if (
+        state.currentItem &&
+        !state.favoriteItems.find((item) => item.id === state?.currentItem?.id)
+      ) {
+        state.favoriteItems.push(state.currentItem);
+      }
+    },
+    deleteFromFavorite: (state, action: PayloadAction<DeleteItemType>) => {
+      state.favoriteItems = state.favoriteItems.filter(
+        (item) => item.id !== action.payload.deleteId
+      );
     },
   },
   extraReducers: (builder) => {
@@ -137,6 +157,9 @@ export const {
   addItemsToComedy,
   addCurrentItem,
   clearCurrentItem,
+  clearCurrentItems,
+  addToFavorite,
+  deleteFromFavorite,
 } = itemsSlice.actions;
 
 export const itemsReducer = itemsSlice.reducer;

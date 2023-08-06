@@ -2,6 +2,10 @@
   background-color: #111;
   color: #fff;
   height: 80px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
 }
 .header__container {
   height: 100%;

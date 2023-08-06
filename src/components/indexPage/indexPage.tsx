@@ -1,5 +1,8 @@
 import { useEffect } from "react";
-import { clearCurrentItem } from "redux/reducers/itemsReducer";
+import {
+  clearCurrentItem,
+  clearCurrentItems,
+} from "redux/reducers/itemsReducer";
 import { useAppDispatch } from "redux/store";
 
 import { ItemsRow } from "components/items/itemsRow";
@@ -9,6 +12,7 @@ export const IndexPage = () => {
 
   useEffect(() => {
     dispatch(clearCurrentItem());
+    dispatch(clearCurrentItems());
   }, []);
 
   return (

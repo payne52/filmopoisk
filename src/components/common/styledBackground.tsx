@@ -6,7 +6,6 @@ interface SectionProps {
 }
 
 export const Background = styled.div<SectionProps>`
-  min-height: 100vh;
   background: ${({ theme }) =>
     theme === "light" ? Colors.PURE_WHITE : Colors.DARK};
   color: ${({ theme }) => (theme === "light" ? Colors.DARK : Colors.LIGHT)};
