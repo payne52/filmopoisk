@@ -1,0 +1,23 @@
+.slick-slider {
+  padding: 10px 0;
+}
+.slick-prev,
+.slick-next {
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+}
+.slick-prev {
+  left: 10px;
+}
+.slick-next {
+  right: 10px;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: #666;
+  font-size: 60px;
+}
+.slick-list {
+  mask-image: linear-gradient(to right, #000 80%, transparent);
+}

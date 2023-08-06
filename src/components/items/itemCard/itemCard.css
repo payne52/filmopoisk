@@ -1,0 +1,40 @@
+.itemCard {
+  display: block;
+  max-width: 190px;
+  padding: 20px 10px;
+}
+.itemCard a {
+  display: block;
+  position: relative;
+  border: 1px solid #ccc;
+  transition: 0.2s;
+}
+.dark .itemCard a {
+  border-color: #111;
+}
+.itemCard a:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+.rating {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  font-weight: 600;
+}
+.rating.gold {
+  background-color: #eacc7f;
+  color: #111;
+}
+.rating.green {
+  background-color: #3bb33b;
+}
+.rating.grey {
+  background-color: #666666;
+}
+.rating.red {
+  background-color: #fa2104;
+}
