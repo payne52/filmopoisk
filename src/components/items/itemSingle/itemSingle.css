@@ -1,0 +1,32 @@
+.item-single__section {
+  padding: 30px 0;
+}
+.item-single__row {
+  gap: 30px;
+}
+.col-poster {
+  flex: 1;
+}
+.item-poster {
+  position: relative;
+}
+.col-description {
+  flex: 2;
+}
+.col-description h2 {
+  margin-top: 60px;
+  text-transform: none;
+}
+.item-info__list {
+  margin-top: 20px;
+}
+.item-info__list-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+.item-info__title {
+  width: 200px;
+}
+.item-info__value {
+  flex: 1;
+}

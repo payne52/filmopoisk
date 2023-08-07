@@ -1,0 +1,40 @@
+.slick-slider {
+  padding: 10px 0;
+}
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+.slick-prev {
+  left: 20px;
+}
+.slick-next {
+  right: 20px;
+}
+.slick-prev:before,
+.slick-next:before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(./arr.svg);
+  background-size: 100%;
+  background-color: #222;
+  border: 2px solid #222;
+  border-radius: 50%;
+}
+.slick-prev:before {
+  transform: rotate(-90deg);
+}
+.slick-next:before {
+  transform: rotate(90deg);
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+  opacity: 0.1;
+}
+.slick-list {
+  mask-image: linear-gradient(to right, #000 80%, transparent);
+}

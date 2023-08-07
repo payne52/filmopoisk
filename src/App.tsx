@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { getBaseUrl } from "utils/getBaseUrl";
+
+import { IndexPage } from "components/indexPage/indexPage";
+import { FavoriteItems } from "components/items/favoritesPage/favoritesPage";
+import { ItemSingle } from "components/items/itemSingle/itemSingle";
+import { ItemsPage } from "components/items/itemsPage/itemsPage";
+import { Layout } from "components/Layout";
+
+import "./fonts/fonts.css";
+import "./App.css";
+
+export const BASE_URL = getBaseUrl();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<IndexPage />} />
+          <Route path="items/:myId" element={<ItemSingle />} />
+          <Route path="items" element={<ItemsPage />} />
+          <Route path=":genre" element={<ItemsPage />} />
+          <Route path="favorite" element={<FavoriteItems />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

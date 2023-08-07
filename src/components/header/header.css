@@ -1,0 +1,29 @@
+.header {
+  background-color: #111;
+  color: #fff;
+  height: 80px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+.header__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.header__row {
+  gap: 20px;
+}
+.logo-link {
+  display: block;
+  height: 30px;
+}
+.logo {
+  height: 100%;
+  width: auto;
+  fill: #fff;
+}
+.header__col_search {
+  flex: 1;
+}
