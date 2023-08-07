@@ -11,3 +11,9 @@
   src: local("Open Sans"), url("./OpenSans-Regular.woff") format("woff");
   font-display: swap;
 }
+@font-face {
+  font-family: "Open Sans Bold";
+  font-weight: 600;
+  src: local("Open Sans Bold"), url("./OpenSans-Bold.woff") format("woff");
+  font-display: swap;
+}

@@ -4,8 +4,9 @@ import { Colors } from "themeContext/themes";
 export const StyledButton = styled.button`
   background: ${Colors.PRIMARY_COLOR};
   color: ${Colors.PURE_WHITE};
-  line-height: 30px;
+  line-height: 40px;
   border: 0;
-  border-radius: 5px;
-  padding: 0 20px;
+  border-radius: 20px;
+  width: 220px;
+  font-family: "Open Sans Bold", sans-serif;
 `;

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BASE_URL } from "App";
 import { ItemType } from "types/items";
 import { Rating } from "utils/rating";
 
@@ -15,12 +16,15 @@ export const ItemBlock = ({
 }) => {
   return (
     <div className="itemBlock">
-      <Link to={`items/${itemData.id}`} className="itemBlock__poster">
+      <Link
+        to={`${BASE_URL}/items/${itemData.id}`}
+        className="itemBlock__poster"
+      >
         {itemData.rating.kp && <Rating value={itemData.rating.kp} />}
         <img src={itemData.poster.previewUrl} />
       </Link>
       <div className="itemBlock__description">
-        <Link to={`items/${itemData.id}`}>
+        <Link to={`${BASE_URL}/items/${itemData.id}`}>
           <h3 className="itemBlock__title">{itemData.name}</h3>
         </Link>
         {itemData.alternativeName && <p>{itemData.alternativeName}</p>}

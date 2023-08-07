@@ -5,6 +5,7 @@ export type InitialStateType = {
   itemsInfo: ItemsInfo;
   itemsInfoDrama: ItemsInfo;
   itemsInfoComedy: ItemsInfo;
+  itemsInfoAdventures: ItemsInfo;
   loading: boolean;
   error: unknown;
   favoriteItems: Array<ItemType>;
@@ -15,6 +16,7 @@ const initialState: InitialStateType = {
   itemsInfo: {} as ItemsInfo,
   itemsInfoDrama: {} as ItemsInfo,
   itemsInfoComedy: {} as ItemsInfo,
+  itemsInfoAdventures: {} as ItemsInfo,
   loading: false,
   error: null,
   favoriteItems: [],
@@ -55,6 +57,9 @@ export const fetchItemsInfo = createAsyncThunk<void, fetchProps>(
             break;
           case "комедия":
             dispatch(addItemsToComedy(itemsInfo));
+            break;
+          case "приключения":
+            dispatch(addItemsToAdventures(itemsInfo));
             break;
         }
       } else {
@@ -102,6 +107,9 @@ const itemsSlice = createSlice({
     },
     addItemsToComedy: (state, action) => {
       state.itemsInfoComedy = action.payload;
+    },
+    addItemsToAdventures: (state, action) => {
+      state.itemsInfoAdventures = action.payload;
     },
     addCurrentItem: (state, action) => {
       state.currentItem = action.payload;
@@ -155,6 +163,7 @@ export const {
   addItems,
   addItemsToDrama,
   addItemsToComedy,
+  addItemsToAdventures,
   addCurrentItem,
   clearCurrentItem,
   clearCurrentItems,

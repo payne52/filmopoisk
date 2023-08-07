@@ -31,15 +31,16 @@ export const ItemsPage = () => {
         showAll: true,
       })
     );
+  }, [currentPage]);
 
+  useEffect(() => {
     if (itemsInfo?.docs?.length) {
       setVisibleItems([...visibleItems, ...itemsInfo.docs]);
     }
-  }, [currentPage]);
+  }, [itemsInfo]);
 
-  const plus = () => {
+  const nextPage = () => {
     setCurrentPage((prev) => prev + 1);
-    console.log(visibleItems, currentPage);
   };
 
   return (
@@ -56,8 +57,8 @@ export const ItemsPage = () => {
               <ItemBlock key={item.id} itemData={item} />
             ))}
         </div>
-        <div className="row">
-          <StyledButton onClick={plus}>Показать еще</StyledButton>
+        <div className="row align-center">
+          <StyledButton onClick={nextPage}>Показать еще</StyledButton>
         </div>
       </div>
     </div>

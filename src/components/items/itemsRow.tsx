@@ -10,9 +10,13 @@ import { ItemCard } from "./itemCard/itemCard";
 import "./itemsRow.css";
 
 export const ItemsRow = ({ category }: { category: string }) => {
-  const { itemsInfoDrama, itemsInfoComedy, loading, error } = useAppSelector(
-    (state) => state.itemsState
-  );
+  const {
+    itemsInfoDrama,
+    itemsInfoComedy,
+    itemsInfoAdventures,
+    loading,
+    error,
+  } = useAppSelector((state) => state.itemsState);
 
   const selectGenre = (genre: string) => {
     switch (genre) {
@@ -20,6 +24,8 @@ export const ItemsRow = ({ category }: { category: string }) => {
         return itemsInfoDrama;
       case "комедия":
         return itemsInfoComedy;
+      case "приключения":
+        return itemsInfoAdventures;
     }
   };
 
@@ -37,11 +43,11 @@ export const ItemsRow = ({ category }: { category: string }) => {
     <div className="section">
       <div className="container">
         <div className="row">
-          {!!error && (error as React.ReactNode)}
-          <Link to={`genre/${category}`}>
+          <Link to={`${category}`}>
             <h2>{category}</h2>
           </Link>
         </div>
+        {!!error && <div className="row">{error as React.ReactNode}</div>}
         <div className="items-row no-flex">
           <SlickSlider slideToShow={6} slidesToScroll={2}>
             {items &&

@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  addToFavorite,
-  deleteFromFavorite,
-  fetchCurrentItemInfo,
-} from "redux/reducers/itemsReducer";
+import { fetchCurrentItemInfo } from "redux/reducers/itemsReducer";
 import { useAppDispatch, useAppSelector } from "redux/store";
 import { Rating } from "utils/rating";
 
@@ -20,8 +16,6 @@ export const ItemSingle = () => {
   const { myId } = useParams();
 
   const dispatch = useAppDispatch();
-
-  console.log(currentItem);
 
   useEffect(() => {
     dispatch(fetchCurrentItemInfo(Number(myId)));
