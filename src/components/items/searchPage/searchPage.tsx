@@ -31,8 +31,7 @@ export const SearchPage = () => {
         searchText: searchValue,
       })
     );
-    console.log(searchResult);
-  }, [currentPage]);
+  }, [currentPage, searchValue]);
 
   useEffect(() => {
     if (searchResult?.docs?.length) {
@@ -43,13 +42,6 @@ export const SearchPage = () => {
   useEffect(() => {
     dispatch(clearSearchResult);
     setVisibleItems([]);
-    dispatch(
-      fetchItemsInfoFromSearchResult({
-        page: currentPage,
-        limit: 10,
-        searchText: searchValue,
-      })
-    );
   }, [searchValue]);
 
   const nextPage = () => {
