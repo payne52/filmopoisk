@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ItemsInfo, ItemType } from "types/items";
+import { ItemsInfo, ItemType, SearchItemsInfo } from "types/items";
 
 export type InitialStateType = {
   itemsInfo: ItemsInfo;
@@ -10,6 +10,7 @@ export type InitialStateType = {
   error: unknown;
   favoriteItems: Array<ItemType>;
   currentItem: ItemType | null;
+  searchResult: SearchItemsInfo;
 };
 
 const initialState: InitialStateType = {
@@ -21,6 +22,7 @@ const initialState: InitialStateType = {
   error: null,
   favoriteItems: [],
   currentItem: null,
+  searchResult: {} as SearchItemsInfo,
 };
 
 export type fetchProps = {
@@ -28,11 +30,37 @@ export type fetchProps = {
   limit: number;
   genre?: string;
   showAll?: boolean;
+  searchText?: string;
 };
 
 type DeleteItemType = {
   deleteId: number;
 };
+
+export const fetchItemsInfoFromSearchResult = createAsyncThunk<
+  void,
+  fetchProps
+>(
+  "items/fetchItemsInfoFromSearchResult",
+  async ({ page, limit, searchText }, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetch(
+        `https://api.kinopoisk.dev/v1.2/movie/search?page=${page}&limit=${limit}&query=${searchText}`,
+        {
+          headers: {
+            "X-API-KEY": "AJ97YQ1-EF0MJEA-HRF7BKT-94NKRNM",
+          },
+        }
+      );
+      const itemsInfo = await response.json();
+      dispatch(addItemsToSearchResult(itemsInfo));
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
 
 export const fetchItemsInfo = createAsyncThunk<void, fetchProps>(
   "items/fetchItemsInfo",
@@ -111,6 +139,12 @@ const itemsSlice = createSlice({
     addItemsToAdventures: (state, action) => {
       state.itemsInfoAdventures = action.payload;
     },
+    addItemsToSearchResult: (state, action) => {
+      state.searchResult = action.payload;
+    },
+    clearSearchResult: (state) => {
+      state.searchResult = {} as SearchItemsInfo;
+    },
     addCurrentItem: (state, action) => {
       state.currentItem = action.payload;
     },
@@ -164,6 +198,8 @@ export const {
   addItemsToDrama,
   addItemsToComedy,
   addItemsToAdventures,
+  addItemsToSearchResult,
+  clearSearchResult,
   addCurrentItem,
   clearCurrentItem,
   clearCurrentItems,

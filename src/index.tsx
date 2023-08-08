@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "redux/store";
+import { SearchProvider } from "searchContext";
 import { ThemeProvider } from "themeContext";
 
 import App from "./App";
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <ThemeProvider>
-      <App />
+      <SearchProvider>
+        <App />
+      </SearchProvider>
     </ThemeProvider>
   </Provider>
 );

@@ -10,8 +10,10 @@ export const StyledInput = styled.input`
   width: calc(100% - 30px);
   background-color: #444;
   transition: 0.2s;
+  color: ${Colors.PURE_WHITE};
 
   &:focus {
     background-color: ${Colors.PURE_WHITE};
+    color: ${Colors.DARK};
   }
 `;

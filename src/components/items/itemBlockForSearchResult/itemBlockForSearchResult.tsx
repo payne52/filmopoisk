@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
 import { BASE_URL } from "App";
-import { ItemType } from "types/items";
+import { SearchItemType } from "types/items";
 import { Rating } from "utils/rating";
 
 import NoPoster from "../../../img/no-poster.jpg";
-import { ChangeItemStatusButton } from "../../common/changeItemStatusButton/changeItemStatusVutton";
 
-import "./itemBlock.css";
+import "../itemBlock/itemBlock.css";
 
-export const ItemBlock = ({
+export const ItemBlockForSearchResult = ({
   itemData,
-  favoriteButton,
 }: {
-  itemData: ItemType;
-  favoriteButton?: boolean;
+  itemData: SearchItemType;
 }) => {
   return (
     <div className="itemBlock">
@@ -21,9 +18,9 @@ export const ItemBlock = ({
         to={`${BASE_URL}/items/${itemData.id}`}
         className="itemBlock__poster"
       >
-        {itemData.rating.kp ? <Rating value={itemData.rating.kp} /> : ""}
-        {itemData.poster?.previewUrl ? (
-          <img src={itemData.poster?.previewUrl} />
+        {itemData.rating ? <Rating value={itemData.rating} /> : ""}
+        {itemData.poster ? (
+          <img src={itemData.poster} />
         ) : (
           <img src={NoPoster} />
         )}
@@ -34,9 +31,8 @@ export const ItemBlock = ({
         </Link>
         {itemData.alternativeName && <p>{itemData.alternativeName}</p>}
         <p>{itemData.year}</p>
-        <p>{itemData.countries.map((elem) => elem.name).join(", ")}</p>
-        <p>({itemData.genres.map((elem) => elem.name).join(", ")})</p>
-        {favoriteButton && <ChangeItemStatusButton itemId={itemData.id} />}
+        <p>{itemData.countries.map((elem) => elem).join(", ")}</p>
+        <p>({itemData.genres.map((elem) => elem).join(", ")})</p>
       </div>
     </div>
   );

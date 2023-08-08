@@ -92,3 +92,32 @@ export interface ItemsInfo {
   pages: number;
   total: number;
 }
+
+export interface SearchItemType {
+  id: number;
+  name: string;
+  alternativeName: string;
+  enName: string;
+  names: Array<string>;
+  type: string;
+  year: number;
+  description: string;
+  shortDescription: string;
+  logo: string;
+  poster: string;
+  backdrop?: string;
+  rating: number;
+  votes: number;
+  movieLength: number;
+  genres: Array<string>;
+  countries: Array<string>;
+  releaseYears?: Array<number>;
+}
+
+export interface SearchItemsInfo {
+  docs: Array<SearchItemType>;
+  limit: number;
+  page: number;
+  pages: number;
+  total: number;
+}

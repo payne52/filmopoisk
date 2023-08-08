@@ -5,6 +5,7 @@ import { IndexPage } from "components/indexPage/indexPage";
 import { FavoriteItems } from "components/items/favoritesPage/favoritesPage";
 import { ItemSingle } from "components/items/itemSingle/itemSingle";
 import { ItemsPage } from "components/items/itemsPage/itemsPage";
+import { SearchPage } from "components/items/searchPage/searchPage";
 import { Layout } from "components/Layout";
 
 import "./fonts/fonts.css";
@@ -22,6 +23,7 @@ function App() {
           <Route path="items" element={<ItemsPage />} />
           <Route path=":genre" element={<ItemsPage />} />
           <Route path="favorite" element={<FavoriteItems />} />
+          <Route path="search" element={<SearchPage />} />
         </Route>
       </Routes>
     </Router>
