@@ -30,7 +30,13 @@ export const ItemBlock = ({
       </Link>
       <div className="itemBlock__description">
         <Link to={`${BASE_URL}/items/${itemData.id}`}>
-          <h3 className="itemBlock__title">{itemData.name}</h3>
+          <h3 className="itemBlock__title">
+            {itemData.name
+              ? itemData.name
+              : itemData.alternativeName
+              ? itemData.alternativeName
+              : ""}
+          </h3>
         </Link>
         {itemData.alternativeName && <p>{itemData.alternativeName}</p>}
         <p>{itemData.year}</p>
