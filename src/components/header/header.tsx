@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-import { Input } from "components/header/searchInput/Input";
-
 import { ReactComponent as Logo } from "./img/logo.svg";
+import { SearchInput } from "./searchInput/SearchInput";
 import { ShowFavoritesButton } from "./showFavoritesButton/showFavoritesButton";
 import { ToggleThemeButton } from "./toggleThemeButton/toggleThemeButton";
 
@@ -19,7 +18,7 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__col_search col">
-            <Input type="text" />
+            <SearchInput />
           </div>
           <div className="col">
             <ToggleThemeButton />

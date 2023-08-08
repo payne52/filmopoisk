@@ -4,6 +4,7 @@ import { fetchCurrentItemInfo } from "redux/reducers/itemsReducer";
 import { useAppDispatch, useAppSelector } from "redux/store";
 import { Rating } from "utils/rating";
 
+import NoPoster from "../../../img/no-poster.jpg";
 import { ChangeItemStatusButton } from "../../common/changeItemStatusButton/changeItemStatusVutton";
 
 import "./itemSingle.css";
@@ -21,20 +22,32 @@ export const ItemSingle = () => {
     dispatch(fetchCurrentItemInfo(Number(myId)));
   }, []);
 
+  console.log(currentItem);
+
   return (
     <div className="item-single__section section">
       <div className="container">
         <div className="item-single__row row">
           <div className="col col-poster">
             <div className="item-poster">
-              {currentItem?.rating.kp && (
+              {currentItem?.rating.kp ? (
                 <Rating value={currentItem?.rating.kp} />
+              ) : (
+                ""
               )}
-              <img src={currentItem?.poster.url} />
+              {currentItem?.poster?.url ? (
+                <img src={currentItem?.poster?.url} />
+              ) : (
+                <img src={NoPoster} alt="no-poster" />
+              )}
             </div>
           </div>
           <div className="col col-description">
-            <h1>{currentItem?.name}</h1>
+            <h1>
+              {currentItem?.name
+                ? currentItem?.name
+                : currentItem?.alternativeName}
+            </h1>
             <p>{currentItem?.alternativeName}</p>
             {currentItem?.id && (
               <ChangeItemStatusButton itemId={currentItem?.id} />
@@ -66,7 +79,7 @@ export const ItemSingle = () => {
                   {currentItem?.persons &&
                     currentItem?.persons
                       .filter((elem) => elem.profession === "режиссеры")
-                      .map((elem) => elem.name)
+                      .map((elem) => (elem.name ? elem.name : elem.enName))
                       .join(", ")}
                 </div>
               </div>
@@ -76,7 +89,7 @@ export const ItemSingle = () => {
                   {currentItem?.persons &&
                     currentItem?.persons
                       .filter((elem) => elem.profession === "актеры")
-                      .map((elem) => elem.name)
+                      .map((elem) => (elem.name ? elem.name : elem.enName))
                       .join(", ")}
                 </div>
               </div>

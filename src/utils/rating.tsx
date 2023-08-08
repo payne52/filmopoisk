@@ -1,4 +1,5 @@
 export const Rating = ({ value }: { value: number }) => {
+  //if (value !== 0) {
   const ratingColor = (rating: number) => {
     if (rating > 8) {
       return "gold";
@@ -14,4 +15,7 @@ export const Rating = ({ value }: { value: number }) => {
   const color = ratingColor(value);
 
   return <div className={`rating ${color}`}>{value.toFixed(1)}</div>;
+  // } else {
+  //   return <>123</>;
+  // }
 };

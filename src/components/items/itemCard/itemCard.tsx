@@ -9,7 +9,7 @@ export const ItemCard = ({ itemData }: { itemData: ItemType }) => {
   return (
     <div className="itemCard">
       <Link to={`${BASE_URL}/items/${itemData.id}`}>
-        {itemData.rating.kp && <Rating value={itemData.rating.kp} />}
+        {itemData.rating.kp ? <Rating value={itemData.rating.kp} /> : ""}
         <img src={itemData.poster.previewUrl} />
       </Link>
     </div>

@@ -1,5 +1,6 @@
 import { useAppSelector } from "redux/store";
 
+import NoPoster from "../../../img/no-poster.jpg";
 import { ItemBlock } from "../itemBlock/itemBlock";
 
 export const FavoriteItems = () => {
