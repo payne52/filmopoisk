@@ -72,7 +72,7 @@ export const fetchItemsInfo = createAsyncThunk<void, fetchProps>(
         }`,
         {
           headers: {
-            "X-API-KEY": "AJ97YQ1-EF0MJEA-HRF7BKT-94NKRNM",
+            "X-API-KEY": "A78YPSY-H8RMTGK-KY1GX5W-A9JRBXE",
           },
         }
       );
